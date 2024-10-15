@@ -1,0 +1,18 @@
+<ActionBar title="Todo App"></ActionBar>
+
+<StackLayout>
+    <GridLayout rows="auto" columns="*, auto">
+        <TextField row="0" col="0" [(ngModel)]="newTodoText" hint="Enter a new todo"></TextField>
+        <Button row="0" col="1" text="Add" (tap)="addTodo()"></Button>
+    </GridLayout>
+
+    <ListView [items]="todos">
+        <ng-template let-todo="item">
+            <GridLayout rows="auto" columns="auto, *, auto">
+                <CheckBox row="0" col="0" [checked]="todo.completed" (tap)="toggleTodo(todo)"></CheckBox>
+                <Label row="0" col="1" [text]="todo.text" [class.completed]="todo.completed"></Label>
+                <Button row="0" col="2" text="Delete" (tap)="deleteTodo(todo)"></Button>
+            </GridLayout>
+        </ng-template>
+    </ListView>
+</StackLayout>
